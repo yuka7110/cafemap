@@ -22,3 +22,33 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## usersテーブル
+
+| Column      | Type         | Options                         |
+| ----------- | ------------ | ------------------------------- |
+| nickname    | string       | null: false                     |
+| email       | string       | null: false                     |
+| encrypted   | string       | null: false                     |
+-has_many :tweets
+-has_many :comments
+
+## tweetsテーブル
+
+| Column      | Type         | Options                         |
+| ----------- | ------------ | ------------------------------- |
+| text        | string       |                                 |
+| user        | references   | null: false, foreign_key: true  |
+-belongs_to :user
+-has_many :comments
+
+## commentsテーブル
+| Column      | Type         | Options                         |
+| ----------- | ------------ | ------------------------------- |
+| text        | string       | null: false                     |
+| user        | references   | null: false, foreign_key: true  |
+| tweet       | references   | null: false, foreign_key: true  |
+-belongs_to :user
+-belongs_to :tweet
+
